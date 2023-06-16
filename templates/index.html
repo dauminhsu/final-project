@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graphic</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"
+            integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css"
+          integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/navbar.css">
+    <link rel="stylesheet" href="static/css/button.css">
+    <link rel="stylesheet" href="static/css/editor.css">
+    <link rel="stylesheet" href="static/css/slider.css">
+</head>
+<body>
+<div class="navbar">
+    <h1>Финальный проект</h1>
+</div>
+<div class="content">
+    <div class="editor">
+        <div class="helper">
+            <div class="action">
+                <button class="button-function" onclick="editorUndo()">
+                    <img src="static/images/undo.png" width="24" height="24" alt="Отменить">
+                </button>
+                <button class="button-function" onclick="editorReset()">
+                    <img src="static/images/reset.png" width="24" height="24" alt="Перезагрузить">
+                </button>
+                <button class="button-function" onclick="editorRedo()">
+                    <img src="static/images/redo.png" width="24" height="24" alt="Повторить">
+                </button>
+            </div>
+            <div class="container">
+                <label class="switch" for="show-line" id="checkbox-container-show-line"></label>
+                <p class="note">Пунктирные линии</p>
+            </div>
+            <div class="container">
+                <label class="switch" for="show-label" id="checkbox-container-show-label"></label>
+                <p class="note">Метка координат</p>
+            </div>
+        </div>
+        <label for="editor"></label>
+        <textarea autofocus id="editor" required></textarea>
+        <div class="button-group">
+            <button class="button-add" onclick="editorSubmit()">
+                Обновлять
+            </button>
+            <button class="button-clear" onclick="editorClear()">
+                Очистить
+            </button>
+        </div>
+    </div>
+    <div class="graphic">
+        <img src="{{ image_name }}" id="plot" alt="Plot coordinate" height="100%">
+    </div>
+</div>
+<script src="static/js/init.js"></script>
+<script src="static/js/index.js"></script>
+</body>
+</html>

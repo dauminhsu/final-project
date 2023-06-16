@@ -1,0 +1,11 @@
+.navbar {
+    background: #303952;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar h1 {
+    color: white;
+    font-size: 32px;
+    text-transform: uppercase;
+}

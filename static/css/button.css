@@ -1,0 +1,47 @@
+.button-group {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 16px;
+}
+
+button:hover {
+    background-color: white;
+}
+
+.button-function {
+    border: 2px solid #dfe4ea;
+    background-color: #dfe4ea;
+}
+
+.button-add {
+    flex: 1;
+    border: 2px solid #303952;
+    background-color: #303952;
+}
+
+.button-add:hover {
+    color: #303952;
+}
+
+.button-clear {
+    flex: 1;
+    border: 2px solid #303952;
+    color: #303952;
+    background: #FFFFFF;
+}
+
+.button-clear:hover {
+    color: #303952;
+    border: 2px solid #FFFFFF;
+}
