@@ -1,2 +1,3 @@
 **/__pycache__
-static/plots
+static/plots/*
+!static/plots/.gitkeep
