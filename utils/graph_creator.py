@@ -115,6 +115,6 @@ def create_graph(
         **arrow_fmt)
 
     image_name = f'static/plots/{uuid.uuid1()}.png'
-    plt.savefig(image_name, bbox_inches='tight', pad_inches=0.2)
+    plt.savefig(image_name, bbox_inches='tight', pad_inches=0.2, transparent=True)
 
     return image_name
