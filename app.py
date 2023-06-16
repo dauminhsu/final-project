@@ -50,7 +50,7 @@ def index():
             elif args[0] == 'circle':
                 center = parse_point(args[1])
                 radius = parse_number(args[2])
-                if center is None or radius is None:
+                if center is None or radius is None or radius < 0:
                     continue
                 circle_repository.add(Circle(center, radius))
 
