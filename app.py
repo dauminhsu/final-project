@@ -20,22 +20,7 @@ def index():
     is_show_label = request.args.get('show-label') == 'true'
 
     if request.method == 'GET':
-        default_point_repository = PointRepository(
-            [Point(-3, 5, 'A'), Point(2, -3, 'B'), Point(-5, -11, 'C'), Point(5, 7, 'D')])
-        default_segment_repository = SegmentRepository(
-            [Segment(Point(7, 5, 'U'), Point(11, 3, 'V'))])
-        default_polygon_repository = PolygonRepository([Polygon(
-            [Point(-5, 3, 'G'), Point(2, 8, 'H'), Point(8, 9, 'I'), Point(7, -2, 'J'), Point(-1, -5, 'K')])])
-        default_circle_repository = CircleRepository(
-            [Circle(Point(3, 3, 'O'), 5)])
-
-        image_name = create_graph(
-            is_show_line,
-            is_show_label,
-            default_point_repository,
-            default_segment_repository,
-            default_polygon_repository,
-            default_circle_repository)
+        image_name = f'/static/defaults/DEFAULT_IMAGE_{is_show_line}_{is_show_label}.png'
         return render_template('index.html', image_name=image_name)
     else:
         point_repository = PointRepository()
