@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 
 from model.circle import Circle
 from model.point import Point
@@ -76,7 +76,10 @@ def index():
             segment_repository,
             polygon_repository,
             circle_repository)
-        return image_name
+        return send_file(
+            image_name,
+            mimetype='image/png',
+            download_name='plot.png')
 
 
 if __name__ == '__main__':

@@ -47,7 +47,7 @@ def create_graph(
         polygon_repository.get_all_label() + circle_repository.get_all_label()
 
     x_min, x_max, delta_x = get_min_max(point_x)
-    y_min, y_max, delta_y = get_min_max(point_x)
+    y_min, y_max, delta_y = get_min_max(point_y)
 
     ticks_frequency = max(delta_x, delta_y) // 20 + 1
 
@@ -127,6 +127,10 @@ def create_graph(
         **arrow_fmt)
 
     image_name = f'static/plots/{uuid.uuid1()}.png'
-    plt.savefig(image_name, bbox_inches='tight', pad_inches=0.2, transparent=True)
+    plt.savefig(
+        image_name,
+        bbox_inches='tight',
+        pad_inches=0.2,
+        transparent=True)
 
     return image_name
