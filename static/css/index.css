@@ -1,3 +1,7 @@
+* {
+     box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -17,4 +21,19 @@ body {
     flex: 1;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin-top: -16px;
+    padding: 16px;
+}
+
+.graphic .plot-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.graphic img {
+    height: 100%;
+    object-fit: contain;
 }
