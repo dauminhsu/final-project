@@ -5,6 +5,23 @@ from matplotlib import pyplot as plt
 from matplotlib.patches import Polygon, Circle
 
 
+def get_min_max(repository):
+    """
+    Получить максимальное значение, минимальное значение и их разницу в списке
+    :param repository: список для продолжения
+    :return: максимальное значение, минимальное значение и их разница
+    """
+    val_min, val_max = -10, 10
+    if len(repository) == 1:
+        val_min = min(repository) - 5
+        val_max = max(repository) + 5
+    elif len(repository) > 0:
+        val_min = min(repository)
+        val_max = max(repository)
+    delta = val_max - val_min
+    return val_min, val_max, delta
+
+
 def create_graph(
         show_line,
         show_label,
@@ -12,6 +29,16 @@ def create_graph(
         segment_repository,
         polygon_repository,
         circle_repository):
+    """
+    Создайте изображение png с нанесенными координатами
+    :param show_line: Отображение пунктира в координатах - bool
+    :param show_label: Отображение пунктира в координатах - bool
+    :param point_repository: Репозиторий точек для построения — PointRepository
+    :param segment_repository: Репозиторий сегментов для построения — SegmentRepository
+    :param polygon_repository: Репозиторий полигонов для построения — PolygonRepository
+    :param circle_repository: Репозиторий сегментов для построения — CircleRepository
+    :return: Путь к сгенерированному изображению
+    """
     point_x = point_repository.get_all_x() + segment_repository.get_all_x() + \
         polygon_repository.get_all_x() + circle_repository.get_all_x()
     point_y = point_repository.get_all_y() + segment_repository.get_all_y() + \
@@ -19,23 +46,8 @@ def create_graph(
     point_label = point_repository.get_all_label() + segment_repository.get_all_label() + \
         polygon_repository.get_all_label() + circle_repository.get_all_label()
 
-    x_min, x_max = -10, 10
-    if len(point_x) == 1:
-        x_min = min(point_x) - 5
-        x_max = max(point_x) + 5
-    elif len(point_x) > 0:
-        x_min = min(point_x)
-        x_max = max(point_x)
-    delta_x = x_max - x_min
-
-    y_min, y_max = -10, 10
-    if len(point_y) == 1:
-        y_min = min(point_y) - 5
-        y_max = max(point_y) + 5
-    elif len(point_y) > 0:
-        y_min = min(point_y)
-        y_max = max(point_y)
-    delta_y = y_max - y_min
+    x_min, x_max, delta_x = get_min_max(point_x)
+    y_min, y_max, delta_y = get_min_max(point_y)
 
     ticks_frequency = max(delta_x, delta_y) // 20 + 1
 
@@ -115,6 +127,10 @@ def create_graph(
         **arrow_fmt)
 
     image_name = f'static/plots/{uuid.uuid1()}.png'
-    plt.savefig(image_name, bbox_inches='tight', pad_inches=0.2, transparent=True)
+    plt.savefig(
+        image_name,
+        bbox_inches='tight',
+        pad_inches=0.2,
+        transparent=True)
 
     return image_name
